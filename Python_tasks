@@ -1,2 +1,243 @@
+#Practising print()
+#Let's practice the print() function. Show the following message to the output:
+#I'm learning to become a Python developer!
+#I'm so excited!
+#Remember that:
+#1. The first sentence should be written entirely on a single line, with no line breaks in the middle.
+#2. The second sentence must appear on a separate line. In other words, you must add a line break after the first sentence.
+#Remember that any typo in your solution will make it marked as incorrect.
+print('I\'m learning to become a Python developer!\nI\'m so excited!')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""#Variables and Operators
+#In a fictional country named Lowtaxland, the income tax is 5%. In another fictional country, Ripoffland, the income tax is 43%. You are given a sample variable named income with the value of 250,000.
+#1. Create two additional variables: lowtaxland_rate with the value of 0.05 (which is the same as 5%) and ripoffland_rate with the value of 0.43 (which is the same as 43%).
+#2. Print to the output the following (all output on a single line):
+#Your income is {income} and you would pay {tax amount in Lowtaxland} income tax in Lowtaxland or {tax amount in Ripoffland} income tax in Ripoffland. You would save {difference between the tax amounts} by paying taxes in Lowtaxland!
+#Your solution must replace the curly brackets (e.g. {income}) with the actual values (e.g. 250000). The values must be calculated correctly. The tax amount should be calculated as {income * lowtaxland_rate} for Lowtaxland, and {income * ripoffland_rate} for Ripoffland, respectively.
+#Try to combine the knowledge from all the lectures presented so far to solve this exercise. If it turns out too difficult, take a look at the Hints tab.
+income = 250_000
+lowtaxland_rate = 0.05
+ripoffland_rate = 0.43
+"""
+print('Your income is', income, 'and you would pay', income * lowtaxland_rate, 'income tax in Lowtaxland or', income * ripoffland_rate, 'income tax in Ripoffland. You would save', income * ripoffland_rate - income * lowtaxland_rate, 'by paying taxes in Lowtaxland!')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+Practising input()
+Ask the user to provide their login and native language. Use the following prompts:
+
+Enter your login: << remember to add a space at the end of this prompt!
+Enter your native language: << remember to add a space at the end of this prompt!
+
+Then, show the user the following message:
+
+Your login is {login provided} and you speak {language provided}
+
+For example, if the user provides the login h_potter and language British English, show:
+
+Your login is h_potter and you speak British English
+
+Watch out for typos: you must show the output in this particular format!
+
+Note: Use the "Run tests" button to check your solution and mark it as complete. Do NOT use the "Run code" button as it will most likely show an error if you use an input() statement.
+"""
+login = input('Enter your login: ')
+language = input('Enter your native language: ')
+ 
+print('Your login is', login, 'and you speak', language)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+Salary calculator
+Ask the user for the number of hours they worked last month and their hourly rate (both numbers should be floats). Use the following prompts:
+
+How many hours did you work last month? << add a space at the end of this prompt
+What is your hourly rate? << add a space at the end of this prompt
+
+Then, show the following message with the calculated salary:
+
+Last month, you earned {hours * hourly_rate} dollars
+
+The salary should be shown as a float number. For example, for input 30 hours and hourly rate 10.5, show:
+
+Last month, you earned 315.0 dollars
+
+Watch out for typos: you must show the output in this particular format!
+
+Note: Use the "Run tests" button to check your solution and mark it as complete. Do NOT use the "Run code" button as it will most likely show an error if you use an input() statement.
+"""
+hours = float(input('How many hours did you work last month? '))
+rate = float(input('What is your hourly rate? '))
+ 
+print('Last month, you earned', hours * rate ,'dollars')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+Refund Policy Helper
+Let's help an online store with their new refund policy. In this store, you can return an item and get a refund in 2 cases:
+
+1. Within 10 days from the day of purchase, given that you have not used the item, or
+2. No matter when you bought it, when the item broke down through no fault of your own.
+
+Write a program that first asks the user three questions and then informs them whether they can get a refund. Ask the following questions:
+
+How many days ago have you purchased the item? << add a space at the end of this prompt
+
+Have you used the item at all [y/n]?  << add a space at the end of this prompt
+
+Has the item broken down on its own [y/n]?  << add a space at the end of this prompt
+
+Based on the answers and the refund policy explained above, print either:
+You can get a refund.
+or:
+You cannot get a refund.
+
+Note: Use the "Run tests" button to check your solution and mark it as complete. Do NOT use the "Run code" button as it will most likely show an error if you use an input() statement.
+"""
+purchase_days_ago = int(input('How many days ago have you purchased the item? '))
+is_used = input('Have you used the item at all [y/n]? ')
+is_broken = input('Has the item broken down on its own [y/n]? ')
+ 
+if(is_broken == 'y' or (purchase_days_ago <= 10 and is_used == 'n')):
+  print('You can get a refund.')
+else:
+  print('You cannot get a refund.')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+Python Guessing Game
+Ask the user to guess the year when Python 1.0 was released (the correct answer is 1994) with the following prompt:
+
+When was Python 1.0 released? << remember to add a space at the end of this prompt
+
+If the user answers 1994, show:
+
+Correct!
+
+and finish the program. If the user answers with any year that is later than 1994, show a hint and ask again for a new year on a new line:
+
+It was earlier than that!
+When was Python 1.0 released? << remember to add a space
+
+If the user answers with any year that is earlier than 1994, show a hint and ask again for a new year on a new line:
+
+It was later than that!
+When was Python 1.0 released? << remember to add a space
+"""
+while True:
+    answer = int(input('When was Python 1.0 released? '))
+    if answer > 1994:
+        print('It was earlier than that!')
+    elif answer < 1994:
+        print('It was later than that!')
+    else:
+        print('Correct!')
+        break
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Helping with the Budget
+#John has a hard time keeping his budget. Write a program to help him analyse his spendings. 
+# You are given a list with John's spendings for each month. Go through the list, and count the number of times...
+#a. the spendings were low (< 1000.0)
+#b. the spendings were normal (between 1000.0 and 2500.0 inclusive)
+#c. the spendings were high (> 2500.0)
+#Then, print the following to the output:
+#Numbers of months with low spendings: x, normal spendings: y, high spendings: z.
+#Replace x, y and z with the calculated numbers.
+# A list of John's spendings for 12 months.
+spendings = [1346.0, 987.50, 1734.40, 2567.0, 3271.45, 2500.0, 2130.0, 2510.30, 2987.34, 3120.50, 4069.78, 1000.0]
+# Initialize counters for each spending category.
+low = 0
+normal = 0
+high = 0
+
+# Iterate through each spending in the list.
+for bill in spendings:
+    # Check if the spending is low.
+    if bill < 1000.0:
+        low += 1
+    # Check if the spending is normal.
+    elif bill <= 2500.0:
+        normal += 1
+    # Otherwise, the spending is high.
+    else:
+        high += 1
+# Print the final count for each category.
+print('Numbers of months with low spendings: ' + str(low) + ', normal spendings: ' + str(normal) + ', high spendings: ' + str(high) + '.')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#All Roads Lead to Rome
+#You are given a list with various flight connections in Europe. Each connection is represented as a tuple with the following elements:
+#(city_from, city_to, time)
+#For example, the following tuple represents a flight from Amsterdam to Dublin which takes 100 minutes:
+#('Amsterdam', 'Dublin', 100)
+#Your task is to go through all the routes in a loop and check how many of them lead to Rome (i.e. how many of them have city_to equal to 'Rome'). 
+# Among the routes to Rome, you should also calculate the average flight time. Print the following the output:
+#{} connections lead to Rome with an average flight time of {} minutes
+#Replace {} with the number of connections and the average flight time.
+
+connections = [
+    ('Amsterdam', 'Dublin', 100),
+    ('Amsterdam', 'Rome', 140),
+    ('Rome', 'Warsaw', 130),
+    ('Minsk', 'Prague', 95),
+    ('Stockholm', 'Rome', 190),
+    ('Copenhagen', 'Paris', 120),
+    ('Madrid', 'Rome', 135),
+    ('Lisbon', 'Rome', 170),
+    ('Dublin', 'Rome', 170)
+    ]
+
+counter = 0
+sum = 0.0
+ 
+for con in connections:
+    if con[1] == 'Rome':
+        counter += 1
+        sum += con[2]
+ 
+print(f'{counter} connections lead to Rome with an average flight time of {sum/counter} minutes')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+Тип	Мутабельность	Пример изменения
+list (список)	Мутабельный	my_list.append(5) — добавление lst = [1, 2, 3] lst.append(4) print(lst) # [1, 2, 3, 4]
+dict (словарь)	Мутабельный	my_dict['key'] = 'value'  dict = {]
+set	Мутабельный	my_set.add(10)
+tuple (кортеж)	Иммутабельный	нельзя заменить элемент t = (1, 2, 3) t = t + (4,)
+str (строка)	Иммутабельный	нельзя изменить символ напрямую
+int, float	Иммутабельный	нельзя изменить значение
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Interactive Dictionary
+#Write a program that implements a simple interactive dictionary. Start by prompting the user with the following:
+#Enter a word in English or EXIT: << put a space at the end of this message
+#When the user enters EXIT in capital letters, terminate the program with the following:
+#Bye!
+#Otherwise, try to find the German equivalent in the dictionary provided in the exercise.
+#a. if the word is in the dictionary, print: Translation: {} << replace {} with the word from the dictionary
+#b. if the word is not in the dictionary, print: No match!
+#You should keep asking the user for new words with the same prompt ('Enter a word in English or EXIT: ') until the user provides EXIT.
+#Here's an example of how the program could work with user input shown in the bold:
+#Enter a word in English or EXIT: dog
+#No match!
+#Enter a word in English or EXIT: face
+#Translation: Gesicht
+#Enter a word in English or EXIT: EXIT
+#Bye!
+
+sample_dict = {
+    "mouth": "Mund",
+    "finger": "Finger",
+    "leg": "Bein",
+    "hand": "Hand",
+    "face": "Gesicht",
+    "nose": "Nase"
+}
+word = ''
+while word != 'EXIT': 
+    word = input('Enter a word in English or EXIT: ')
+    if word == 'EXIT':
+        break
+    elif word in sample_dict:
+        print(f'Translation: {sample_dict[word]}')
+    elif word not in sample_dict:
+        print('No match!')
+print('Bye!')
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
