@@ -236,7 +236,29 @@ while word != 'EXIT':
         print('No match!')
 print('Bye!')
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+fun 1. cause effect 2. return meaningful value
+def function(parameter_name, parameter_name)   function('positional_argument_value', named_argument='value')
+    business_logic
+    return/'value'/automatically returns None
+def function():
+    global function_variable(changing_global_value)
+    function_variable.append(addition_value_changing_global_variable)
+    function_variable(local_value) #shadowing
+function_variable(global_value)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Get Rid of Duplicates!
+#Write a function named unique. The function should accept one parameter, which is a list with any number of elements inside. The default value for the parameter should be an empty list ([]).
+#The function should return a new list with all duplicate elements removed. The function should preserve the original order of elements.
+#Example 1: for unique([1, 1, 4, 5, 1]), the output should be [1, 4, 5]
+#Example 2: for unique(['Mark', 'Mark', 'John', 'Anne']), the output should be  ['Mark', 'John', 'Anne']
+def unique (list = []):
+    new_list = []
+    # Iterate through the original list and add unique items to the new list
+    # This ensures that only the first occurrence of each item is kept.
+    for item in list:
+        if item not in new_list:
+            new_list.append(item)
+    return new_list
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
