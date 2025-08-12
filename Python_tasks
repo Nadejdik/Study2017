@@ -1,3 +1,4 @@
+PCEP cource
 #Practising print()
 #Let's practice the print() function. Show the following message to the output:
 #I'm learning to become a Python developer!
@@ -302,6 +303,107 @@ Exception	SystemExit KeyboardInterrapt
 ArithmeticError LookupError TypeError ValueError
 ZeroDivisionError	IndexError	KeyError
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def get_day(user_info):
+    dayint(input('What is the day of your bday?')) 2
+    user_info.append(day)
+def get_month(user_info):
+    month= int(input('What is the month (1-12) of your bday?'))
+    user_info.append(month)
+def get year(user_info):
+    year = int(input('What is the year of your bday?'))
+    user_info.append(year)
+def get_user_bday(user_info):
+    try:
+    get_day(user_info)
+    get_month(user_info)
+    get_year(user_info)
+    print('So your bday is', user_info)
+    except ValueError:
+    print('You entered incorrect data, bye!')
+print('Hi, I will collect some info about your bday!")
+user_info = []
+get_user_bday (user_info)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def calculate_inverse(number):
+    assert (number != 0), 'Got 0 as number!'
+    return 1/number
+calculate Inverse (0)
+
+USE assertions:
+1. For debugging/testing your code
+2. For documenting your code
+
+DO NOT:
+1. Validate user input with assertions
+2. Handle AssertionErrors in try...except
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PCAP cource
+decomposition and modules
+import FunctionName
+docs.python.org/3/library/index.html#the-python-standart-library
+
+import sys, math # you need to add 'sys.prefix'
+for name in dir(sys):
+    print(name, end='/t')
+sys.exit()
+
+from sys import exit
+exit()
+
+import sys as s  #give aliaces to modules
+s.exit()
+
+from sys import exit as bye_bye  #give aliaces to modules
+s.exit()
+
+import random
+print(random.random)  #python seed uses local computer time
+random.seed(0)  
+print(random.random)  #using 0 for seed
+
+numbers = [1, 2, 3, 4, 5]
+names = ['Kate', 'Bob', 'Sara', 'Peter']
+print(random.choise(numbers))
+print(random.choise(names))
+random.choise('TheRandomTextHereToChooseTheLetter')
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for i in a range(10)
+    print(random.choice(numbers))
+
+names = ['Kate', 'Bob', 'Sara', 'Peter']
+random.sample(names, 4)
+random.sample(['Martin', 'John', 'Kate'], 2)
+
+import platform
+
+print(platform.system())       # Название ОС: Windows, Linux, Darwin (macOS)
+print(platform.release())      # Версия ОС
+print(platform.version())      # Подробная версия ОС
+print(platform.machine())      # Архитектура машины, например 'x86_64'
+print(platform.processor())    # Информация о процессоре
+print(platform.python_version())  # Версия Python
+
+https://pypi.org/  #It is a repository full of Python modules, you can browse them and download them as you need
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Using "random"
+Let's write a simple function that will help organise lotteries. The function will generate a list of random numbers (to simulate lottery tickets), and it will also choose one number from the generated list (to simulate the winning ticket).
+
+Write a function named generate_tickets that will accept two integer arguments: ticket_count and max_number. The function should return a tuple with exactly two elements:
+
+first element: a list of random unique integer numbers in the range from 0 (inclusive) to max_number (exclusive); the number of elements is provided in the ticket_count argument
+
+second element: one random element from the generated list of numbers
+
+Calling generate_tickets(5, 10) should generate 5 random unique integers in the range from 0 (inclusive) to 10 (exclusive). An example return value for this invocation could be:
+
+([2, 8, 9, 3, 0], 8)
+
+In this case, the random numbers are: 2, 8, 9, 3, 0. The winning number is 8.
+
+Note: You can assume that the arguments of the function are always correct (i.e. you always get two correct integers as the input arguments).
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
