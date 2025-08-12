@@ -357,9 +357,9 @@ from sys import exit as bye_bye  #give aliaces to modules
 s.exit()
 
 import random
-print(random.random)  #python seed uses local computer time
+print(random.random())  #python seed uses local computer time
 random.seed(0)  
-print(random.random)  #using 0 for seed
+print(random.random())  #using 0 for seed
 
 numbers = [1, 2, 3, 4, 5]
 names = ['Kate', 'Bob', 'Sara', 'Peter']
@@ -375,6 +375,18 @@ names = ['Kate', 'Bob', 'Sara', 'Peter']
 random.sample(names, 4)
 random.sample(['Martin', 'John', 'Kate'], 2)
 
+import random
+# Шаг 1: Создаём пустой список
+numbers = []
+# Шаг 2: Заполняем список 5 случайными числами от 0 до 9
+for _ in range(5):  #'_' в Python часто используют как "переменную, которую не собираемся использовать". 5 раз генерируем число
+    num = random.randint(0, 9)  # случайное целое от 0 до 9
+    numbers.append(num) #и добавляем в список значения
+print("Сгенерированные числа:", numbers)
+# Шаг 3: Выбираем случайное число из списка
+winning_number = random.choice(numbers)
+print("Выбранное число:", winning_number)
+
 import platform
 
 print(platform.system())       # Название ОС: Windows, Linux, Darwin (macOS)
@@ -386,22 +398,15 @@ print(platform.python_version())  # Версия Python
 
 https://pypi.org/  #It is a repository full of Python modules, you can browse them and download them as you need
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Using "random"
-Let's write a simple function that will help organise lotteries. The function will generate a list of random numbers (to simulate lottery tickets), and it will also choose one number from the generated list (to simulate the winning ticket).
-
-Write a function named generate_tickets that will accept two integer arguments: ticket_count and max_number. The function should return a tuple with exactly two elements:
-
-first element: a list of random unique integer numbers in the range from 0 (inclusive) to max_number (exclusive); the number of elements is provided in the ticket_count argument
-
-second element: one random element from the generated list of numbers
-
-Calling generate_tickets(5, 10) should generate 5 random unique integers in the range from 0 (inclusive) to 10 (exclusive). An example return value for this invocation could be:
-
-([2, 8, 9, 3, 0], 8)
-
-In this case, the random numbers are: 2, 8, 9, 3, 0. The winning number is 8.
-
-Note: You can assume that the arguments of the function are always correct (i.e. you always get two correct integers as the input arguments).
+#Using "random"
+#Let's write a simple function that will help organise lotteries. The function will generate a list of random numbers (to simulate lottery tickets), and it will also choose one number from the generated list (to simulate the winning ticket).
+#Write a function named generate_tickets that will accept two integer arguments: ticket_count and max_number. The function should return a tuple with exactly two elements:
+#first element: a list of random unique integer numbers in the range from 0 (inclusive) to max_number (exclusive); the number of elements is provided in the ticket_count argument
+#second element: one random element from the generated list of numbers
+#Calling generate_tickets(5, 10) should generate 5 random unique integers in the range from 0 (inclusive) to 10 (exclusive). An example return value for this invocation could be:
+#([2, 8, 9, 3, 0], 8)
+#In this case, the random numbers are: 2, 8, 9, 3, 0. The winning number is 8.
+#Note: You can assume that the arguments of the function are always correct (i.e. you always get two correct integers as the input arguments).
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
