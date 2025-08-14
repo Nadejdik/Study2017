@@ -376,10 +376,17 @@ random.sample(names, 4)
 random.sample(['Martin', 'John', 'Kate'], 2)
 
 import random
+items = [1, 2, 3, 4, 5]
+print(random.sample(items, 3))  # Несколько уникальных элементов на входе, возвращает Список из k элементов,  например, [2, 5, 1] — три уникальных элемента
+print(random.choice(items))     # выбирает и возвращает Один элемент например, 4 — один элемент
+num = random.randint(0, 9)  # Одно только целое число из диапазона, например выбираем случайное целое от 0 до 9
+random.randrange(start, stop, step) #где range(0, 5, 20), randrange(a, b) возвращает число от a до b-1 (то есть stop не включается)
+
+import random
 # Шаг 1: Создаём пустой список
 numbers = []
 # Шаг 2: Заполняем список 5 случайными числами от 0 до 9
-for _ in range(5):  #'_' в Python часто используют как "переменную, которую не собираемся использовать". 5 раз генерируем число
+for _ in range(5):  #'_' в Python часто используют как "переменную, которую не собираемся использовать". 5 раз генерируем число. встроенная функция range(start, stop, step)
     num = random.randint(0, 9)  # случайное целое от 0 до 9
     numbers.append(num) #и добавляем в список значения
 print("Сгенерированные числа:", numbers)
@@ -407,8 +414,457 @@ https://pypi.org/  #It is a repository full of Python modules, you can browse th
 #([2, 8, 9, 3, 0], 8)
 #In this case, the random numbers are: 2, 8, 9, 3, 0. The winning number is 8.
 #Note: You can assume that the arguments of the function are always correct (i.e. you always get two correct integers as the input arguments).
+import random as r # импортируем модуль random и называем его коротко r, чтобы писать меньше кода.
+def generate_tickets(ticket_count, max_number):  # создаём функцию, которая принимает два аргумента: ticket_count — сколько чисел мы хотим сгенерировать; max_number — диапазон чисел (от 0 до max_number - 1).
+    s = r.sample(range(max_number), ticket_count)  # создаём список s, в который помещаем уникальные случайные числа из диапазона 0 … max_number-1., range(max_number) создаёт диапазон чисел;r.sample(..., ticket_count) выбирает ticket_count уникальных элементов.
+    return s, r.choice(s)  #функция возвращает два значения:Список всех сгенерированных чисел (s);Одно случайное число из этого списка (r.choice(s)).
+print(generate_tickets(5,10))  #вызываем функцию: генерируем 5 случайных чисел от 0 до 9; выбираем из них одно «выигрышное»; выводим оба результата кортежем.
+
+result = generate_tickets(5, 10)
+print(f"Билеты: {result[0]}, Выигрышный билет: {result[1]}")
+
+return (list_to_return, random.sample(list_to_return, 1)[0])
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Creating own modules
+Let's create a simple program that uses some modularity. You are given three files:
+1. string_utils.py (note singular "string")
+2. strings_utils.py (note plural "strings")
+3. main_program.py
+Your task is to fill all three files with some code according to the requirements:
+1. string_utils.py: this file should contain a function named halve_string that accepts a single argument: input_string. Given a string, the function should return a tuple with two string elements: the first element should contain the first half of the string, the second element should contain the second half of the string. For strings with an odd count of characters, the first element should also contain the middle character.
+Example 1: halve_string('Mark') should return ('Ma', 'rk')
+Example 2: halve_string('Lydia') should return ('Lyd', 'ia')
+2. strings_utils.py: this file should import string_utils as a module and then use the function from point (1) to create its own function named halve_strings that accepts a single argument: a list of strings string_list. Given a list of strings, the function should return a list of tuples with halved strings, just like we explained in point (1).
+Example: halve_strings(['Mark', 'Lydia']) should return [('Ma', 'rk'), ('Lyd', 'ia')]
+3. main_program.py: this file should import strings_utils as a module, use the function from point (2) on the list provided in the editor (quotes), and print the return value of the function. 
+
+string_utils.py
+
+import math
+ 
+def halve_string(input_string):
+    middle = math.ceil(len(input_string)/2)
+    return (input_string[:middle], input_string[middle:])
+
+
+strings_utils.py
+
+import string_utils
+ 
+def halve_strings(string_list):
+    to_return = []
+    for string in string_list:
+        to_return.append(string_utils.halve_string(string))
+    return to_return
+
+
+main_program.py
+
+import strings_utils
+ 
+quotes = ['Being happy never goes out of style.',
+'Life is either a great adventure or nothing.',
+'All you need in this life is ignorance and confidence; then success is sure.',
+'All your life, you will be faced with a choice. You can choose love or hate... I choose love.',
+'The time is always right to do what is right.']
+ 
+print(strings_utils.halve_strings(quotes))
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+internal string representation
+
+for char in 'hello from the world of Python':  #(str) object PyUnicodeObject where each symbol is Unicode-kod. The memory under this pre-allocated symbol, Python knows its size (len(...))
+	print(char, end='-')  #special method __iter__ which returns an iterator object str_iterator, when for asks for next(), the iterator takes the character by index and the index is incremented
+#The variable char now holds the new small string 'h'. Executes print(char, end='-'):print adds \n by default, but end='-' replaces it with a hyphen.
+
+'ilovetravellingaroundtheworld'.index('a')  #.index() is a string method that finds the first occurrence of a specified substring. 
+#Returns the index (position number, starting from 0). If the substring is not found → throws a ValueError exception.
+my_text = 'This is my sample string'
+print(my_text.index('are')) #returns ValueError: substring not found
+print(my_text.find('is')) #returns [2], if it doesn't find it, it will return -1 instead of an error.
+my_text.find('is', 10)  #start sesarch from 10 position
+my_text.find('is', 10, 15) #search in a range 10-15 exclusive, returns '-1'
+
+print('work work work'.find('work'))  #0
+print('work work work'.rfind('work'))  #searching from the right to the left - 10
+print('work work work'.find('work', 2))  #5
+print('work work work'.rfind('work', 2))  #10
+print('work work work'.find('work', 2, 5))  #-1
+
+isalnum()  #Returns True, a string method that checks whether a string consists only of letters and/or numbers (no spaces, punctuation, or other characters).
+'Adrian'.isalnum()  # True
+print("Hello123".isalnum())   # True (только буквы и цифры)
+print("Hello 123".isalnum())  # False (есть пробел)
+print("123456".isalnum())     # True (только цифры)
+print("Hello!".isalnum())     # False (есть "!")
+print("".isalnum())           # False (пустая строка)
+isalpha() #Checks if a string consists only of letters
+isdigit()  #Checks whether a string consists only of digits (0-9 and some other numeric characters, such as "²", "٤").
+print("hello".islower())   # lowercase check
+print("HELLO".isupper())   # uppercase check
+print("   ".isspace())     # whitespace check
+
+' '.join(['This is', 'a spectacular', 'place to be'])
+#'This is a spectacular place to be' The string method (str.join(iterable)) joins all the elements of an iterable (e.g. a list of strings) into a single string.
+'-'.join(['This is', 'a spectacular', 'place to be'])
+#'This is-a spectacular-place to be' The string on which .join() is called is used as a separator between elements.
+
+#The .split() method without arguments splits a string into words at any whitespace characters (space, tab \t, newline \n).
+'How many\tstrings\nwill you see?'.split()  # split on whitespace
+# Result: ['How', 'many', 'strings', 'will', 'you', 'see?'] .split() returns a list of words.
+names = ['Adam', 'Kate', 'Barbara', 'Donna']  # original list
+
+#Function sorted() returns a new list whose elements are sorted alphabetically. The original names list remains unchanged.
+names_sorted = sorted(names)                  # sort alphabetically
+print(names_sorted)
+# Result: ['Adam', 'Barbara', 'Donna', 'Kate']
+#The difference between sorted() and the list method .sort(): 
+#.sort() modifies the original list in place, returns None.
+#sorted() creates a new sorted list.
+
+# Example 1: using .sort() method (sorts list in-place)
+names = ['Kate', 'Adam', 'Barbara', 'Donna']
+names.sort()                 # sorts the original list
+print(names)                 # ['Adam', 'Barbara', 'Donna', 'Kate']
+
+# Example 2: using sorted() function (returns a new sorted list)
+numbers = [5, 2, 9, 1]
+sorted_numbers = sorted(numbers)  # creates a new sorted list
+print(sorted_numbers)             # [1, 2, 5, 9]
+print(numbers)                    # [5, 2, 9, 1]  original list unchanged
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Working with strings
+John loves analysing textual information. He often reads short stories and then tries to find the longest word in such stories. 
+Doing this manually takes a long time so we'd like to help him automate the task. \
+Note: You are provided an example of a short story in the code editor. 
+The example story should not be part of your solution: it is just there to help you.
+Write a function named get_longest_word which accepts a single string argument. 
+The function should return the longest word in the given string. 
+Assume that words in a string can be separated with spaces, commas, new line characters or full stops. 
+This means that abbreviated forms with apostrophes (e.g. I'm) are considered to be a single word. 
+If there is more than one word with the maximum number of characters, return the first such word that exists in the string.
+Example: For input Once I'm awaken, I'll sacrifice your soul to the ruler of darkness. the output should be sacrifice.
+
+sample_story = '''Once upon a time, there was a beginner programmer named Alice who was eager to learn Python. She tried to learn from books, but found it difficult to grasp the concepts. One day, she stumbled upon an online course.
+
+Alice was thrilled. The course was taught by a well-known programmer who made the lessons interesting and easy to understand. The course covered everything a beginner programmer needed, and Alice was finally able to understand how to code in Python.'''
+
+def get_longest_word(input_string):
+    words = input_string.replace('.', ' ').replace(',', ' ').split()
+    temp_max_word = ''
+ 
+    for word in words:
+      if len(word) > len(temp_max_word):
+        temp_max_word = word
+    
+    return temp_max_word
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'Python' == 'Python'  # True, строки полностью совпадают
+'Python' == 'python'  # False, разные регистры ('P' != 'p')
+'Python' != 'python'  # True, потому что они не равны
+'I love Python' < 'I love python' # ASCII коды: 'P' → 80, 'p' → 112
+'P' (80) > 'Z' (90) → False #Python останавливается на первой позиции, где символы различаются.
+20 > '2'  #TypeError: '>' not supported between instances of 'int' and 'str'
+20 > int('2')    # True
+str(20) > '2'    # True, сравнение по символам
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OOP object oriented programming
+Procedural programming (процедурное программирование) — это парадигма программирования, где программа строится как последовательность процедур (функций), которые последовательно выполняют операции над данными.
+
+Основные характеристики:
+Фокус на функциях/процедурах
+Программа состоит из блоков кода (процедур), которые вызываются по мере необходимости.
+
+Данные и функции отдельно
+Данные обычно глобальные или передаются в функции как аргументы.
+
+Последовательное выполнение
+Код выполняется сверху вниз, шаг за шагом.
+
+Простая структура
+Легко понять поток выполнения, удобно для небольших программ.
+
+An object in Object-Oriented Programming (OOP) is a self-contained entity that combines data (attributes/properties) and functions (methods) that operate on that data. 
+Objects are instances of classes, which act as blueprints.
+# Define a class
+class Dog:
+    def __init__(self, name, age):
+        self.name = name       # attribute
+        self.age = age         # attribute
+    
+    def bark(self):            # method
+        print(f"{self.name} says Woof!")
+
+# Create objects (instances of the class)
+dog1 = Dog("Buddy", 3)
+dog2 = Dog("Lucy", 5)
+
+# Use object methods and attributes
+dog1.bark()   # Output: Buddy says Woof!
+print(dog2.age)  # Output: 5
+dog1 and dog2 are objects of class Dog.
+
+Each object has its own data (name, age) and can use methods (bark()).
+
+class User:  
+    def __init__(self):  
+        self.nickname = 'sampleNickname'   # Атрибут nickname
+        self.city = 'sampleCity'           # Атрибут city  
+
+    def introduce(self):  
+        print(f"Hello, I am {self.nickname} and I live in {self.city}")  
+sample_user = User()  # Создание объекта (экземпляра класса)
+sample_user.introduce()  # Вызов метода introduce 
+
+class – class
+атрибут – attribute (или property, но attribute — точнее в Python)
+конструктор – constructor
+метод – method
+экземпляр класса – instance of a class
+вызвать метод – call a method
+ссылка на объект (self) – reference to the object (self)
+строка с подстановкой – f-string (formatted string literal)
+инициализация объекта – object initialization
+объявление класса – class declaration
+создание объекта – object creation (instantiation)
+
+class User:                          # 1. Class declaration
+    def __init__(self):              # 2. Constructor (initializes object attributes)
+        self.nickname = 'sampleNickname'  # 3. Attribute: nickname
+        self.city = 'sampleCity'          # 4. Attribute: city
+
+    def introduce(self):              # 5. Method of the class
+        print('Hello, I am', self.nickname, 'and I live in', self.city)
+
+sample_user = User()  # 6. Create an object (instance) of the User class
+sample_user.introduce()  # 7. Call the method 'introduce'
+
+print(sample_user.nickname)  # 8. Access and print attributes directly
+print(sample_user.city)
+Пошагово
+class User: — объявляется класс User, как шаблон для объектов.
+def __init__(self): — конструктор, автоматически вызывается при создании нового объекта.
+Внутри конструктора создаются два атрибута:
+self.nickname = 'sampleNickname'
+self.city = 'sampleCity'
+introduce() — метод, который выводит приветственное сообщение, используя значения атрибутов.
+sample_user = User() — создаётся новый объект (экземпляр класса).
+sample_user.introduce() — вызывается метод, и на экран выводится:
+Hello, I am sampleNickname and I live in sampleCity
+print(sample_user.nickname) — прямой доступ к атрибуту, печатает:sampleNickname
+print(sample_user.city) — печатает:sampleCity
+
+
+class User:
+    def __init__(self, nickname, city):   # Constructor with parameters
+        self.nickname = nickname           # Attribute nickname
+        self.city = city                   # Attribute city
+
+    def introduce(self):                    # Method
+        print(f"Hello, I am {self.nickname} and I live in {self.city}")
+
+first_user = User('DarkKnight', 'Hell')  # Creating instances (objects) of the class with different values
+second_user = User('Ruler of Darkness', 'Darkness')
+third_user = User('Martin', 'Boston')
+
+# Calling the method for each object
+first_user.introduce()        # Hello, I am DarkKnight and I live in Hell
+second_user.introduce()       # Hello, I am Ruler of Darkness and I live in Darkness
+third_user.introduce()        # Hello, I am Martin and I live in Boston
+
+
+class Car:
+    def __init__(self, model, colour, initial_speed=0):  # Constructor with default speed
+        self.model = model
+        self.colour = colour
+        self.speed = initial_speed
+
+    def speed_up(self):
+        self.speed += 5  # Increase speed by 5
+
+    def slow_down(self):
+        self.speed = 5   # Set speed to 5
+
+    def show_speed(self):
+        print('Current speed:', self.speed)
+
+my_lovely_car = Car('T-Roc', 'red') # Create an object (instance) of Car
+my_lovely_car.speed_up()    # speed = 5# Change the speed
+my_lovely_car.speed_up()    # speed = 10
+my_lovely_car.show_speed()  # Output: Current speed: 10  # Show current speed
+
+OOP principles: 1. encapsulation, 2. abstraction, 3. inheritance, 4. polymorphism
+| OOP Principle     | Example Attribute/Method               | Python Example                                   | Explanation                                                     |
+| ----------------- | -------------------------------------- | ------------------------------------------------ | --------------------------------------------------------------- |
+| **Encapsulation** | `_speed` (private)                     | `self._speed = 0`                                | Attribute is hidden; accessed via methods only (`show_speed()`) |
+| **Abstraction**   | `start()`                              | `def start(self): print("Car started")`          | Hides internal logic; user just calls `start()`                 |
+| **Inheritance**   | `Car` inherits `Vehicle`               | `class Car(Vehicle): ...`                        | Reuses code from parent class (`Vehicle`)                       |
+| **Polymorphism**  | `show_speed()` different in subclasses | `my_car.show_speed()` vs `my_truck.show_speed()` | Same method name behaves differently for different objects      |
+
+1. Encapsulation
+Definition: Hiding the internal state of an object and requiring all interaction to be performed through methods.
+
+Example:
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance  # private attribute
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount(100)
+account.deposit(50)
+print(account.get_balance())  # 150
+__balance is hidden from outside, accessed only via methods.
+
+2. Abstraction
+Definition: Hiding complex implementation details and showing only the necessary functionality.
+
+Example:
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius**2
+
+c = Circle(5)
+print(c.area())  # 78.5
+User sees only area() without worrying about calculation details.
+
+3. Inheritance
+Definition: Creating a new class based on an existing class, inheriting its attributes and methods.
+
+Example:
+class Vehicle:
+    def start(self):
+        print("Vehicle started")
+
+class Car(Vehicle):
+    def honk(self):
+        print("Car honks")
+
+my_car = Car()
+my_car.start()  # inherited from Vehicle
+my_car.honk()   # own method
+4. Polymorphism
+Definition: Ability to use a single interface to represent different underlying forms (methods behave differently for different objects).
+
+Example:
+class Dog:
+    def speak(self):
+        print("Woof!")
+
+class Cat:
+    def speak(self):
+        print("Meow!")
+
+animals = [Dog(), Cat()]
+for animal in animals:
+    animal.speak()  # Different behavior, same method name
+
+
+class Car:
+    def __init__(self, model, colour, initial_speed=0):  
+        # Constructor with default speed
+        self.model = model                 # Car model
+        self.colour = colour               # Car colour
+        
+        # Avoid negative initial speed
+        if initial_speed < 0:
+            self.speed = 0
+        else:
+            self.speed = initial_speed
+
+    def speed_up(self):
+        # Increase speed by 5
+        self.speed += 5
+
+    def slow_down(self):
+        # Decrease speed by 5, but don't allow negative speed
+        if self.speed < 5:
+            self.speed = 0
+        else:
+            self.speed -= 5
+
+    def show_speed(self):
+        # Display current speed
+        print('Current speed:', self.speed)
+
+my_lovely_car = Car('T-Roc', 'red', -50)  # Create a car with negative initial speed
+my_lovely_car.show_speed()  # Output: Current speed: 0  # Show speed (should be corrected to 0)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Name mangling в Python
+If an attribute starts with a double underscore __, Python automatically changes its name inside the class to the format _ClassName__attr.
+This does not make the attribute completely private, but it makes it harder to access directly from outside.
+class MyClass:
+    def __init__(self):
+        self.__secret = 42   # name mangling will change this to _MyClass__secret
 
+    def reveal(self):
+        print(self.__secret)
+
+obj = MyClass()
+obj.reveal()                 # 42
+
+# Direct access using mangled name
+print(obj._MyClass__secret)  # 42
+
+# obj.__secret                # AttributeError: 'MyClass' object has no attribute '__secret'
+
+# --- 1️⃣ Define a simple Dog class with public attributes ---
+class Dog:
+    def __init__(self, name, age):  # constructor
+        self.name = name            # public attribute 'name'
+        self.age = age              # public attribute 'age'
+
+# --- 2️⃣ Create an object of Dog ---
+my_pet = Dog('Teddy', 2)
+
+# Print the dictionary of attributes of the object
+print(my_pet.__dict__)  
+# Output: {'name': 'Teddy', 'age': 2}
+
+# --- 3️⃣ Dynamically add a new attribute ---
+my_pet.colour = 'brown'          # dynamically add 'colour' attribute
+print(my_pet.__dict__)  
+# Output: {'name': 'Teddy', 'age': 2, 'colour': 'brown'}
+
+# --- 4️⃣ Delete an attribute ---
+del my_pet.name                   # remove 'name' attribute
+print(my_pet.__dict__)  
+# Output: {'age': 2, 'colour': 'brown'}
+
+# --- 5️⃣ Demonstrate name mangling with double underscore ---
+class Dog:
+    def __init__(self, name, age):
+        self.__name = name        # private-like attribute (name mangling)
+        self.age = age             # public attribute
+
+# Create a new object
+my_pet = Dog('Teddy', 2)
+
+# Print the object's dictionary
+print(my_pet.__dict__)  
+# Output: {'_Dog__name': 'Teddy', 'age': 2}
+# Notice: __name is changed to _Dog__name internally by Python
+
+# --- 6️⃣ Accessing the mangled attribute directly ---
+print(my_pet._Dog__name)         # Output: Teddy
+# This shows how name mangling works internally
+Key Points in Comments
+Public attributes: name, age – accessible directly.
+Dynamic attributes: can add colour anytime.
+Deletion: del removes attribute from __dict__.
+Name mangling: double underscores create _ClassName__attr to avoid conflicts.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
