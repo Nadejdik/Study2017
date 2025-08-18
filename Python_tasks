@@ -756,6 +756,7 @@ class Car(Vehicle):
 my_car = Car()
 my_car.start()  # inherited from Vehicle
 my_car.honk()   # own method
+
 4. Polymorphism
 Definition: Ability to use a single interface to represent different underlying forms (methods behave differently for different objects).
 
