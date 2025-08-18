@@ -719,6 +719,58 @@ account.deposit(50)
 print(account.get_balance())  # 150
 __balance is hidden from outside, accessed only via methods.
 
+public → для всех, без ограничений.
+_protected → доступ есть, но это сигнал "для внутреннего использования".
+__private (name mangling) → работает через name mangling, поддерживая инкапсуляцию.
+
+# ---- Инкапсуляция ----
+class Account:
+    def __init__(self, balance):        # конструктор, принимает стартовый баланс
+        self.__balance = balance        # __balance – приватное поле (инкапсуляция)
+
+    def deposit(self, amount):          # метод для пополнения счёта
+        self.__balance += amount        # увеличиваем приватный баланс
+
+    def withdraw(self, amount):         # метод для снятия денег
+        if amount <= self.__balance:    # проверяем хватает ли средств
+            self.__balance -= amount    # уменьшаем баланс
+        else:
+            print("Not enough money")   # если денег не хватает – сообщение
+
+    def get_balance(self):              # метод для безопасного доступа к балансу
+        return self.__balance           # возвращает значение, но прямого доступа нет
+
+# ---- Абстракция ----
+
+from abc import ABC, abstractmethod  # импорт для абстрактных классов
+
+class Vehicle(ABC):  # создаём абстрактный класс "Транспорт"
+    @abstractmethod  # говорим: каждый наследник обязан реализовать этот метод
+    def move(self):  # метод move() – идея "транспорт может двигаться"
+        pass         # здесь реализации нет, только "обещание"
+
+
+class Car(Vehicle):   # класс "Машина", наследник Vehicle
+    def move(self):   # реализация обязательного метода move()
+        print("The car drives on the road")  # конкретная логика: машина едет по дороге
+
+
+class Boat(Vehicle):  # класс "Лодка", тоже наследник Vehicle
+    def move(self):   # реализация обязательного метода move()
+        print("The boat sails on the water")  # лодка плывёт по воде
+
+# --- Используем ---
+# Абстракция: мы работаем с "транспортом", не вникая в детали
+vehicles = [Car(), Boat()]   # создаём список: машина и лодка
+for v in vehicles:           # перебираем все объекты транспорта
+    v.move()                 # вызываем move(), и каждый ведёт себя по-своему
+
+# Инкапсуляция: мы управляем счётом только через методы
+acc = Account(100)           # создаём аккаунт с балансом 100
+acc.deposit(50)              # пополняем на 50
+acc.withdraw(30)             # снимаем 30
+print(acc.get_balance())     # получаем баланс (120), напрямую доступ запрещён
+
 2. Abstraction
 Definition: Hiding complex implementation details and showing only the necessary functionality.
 
@@ -868,4 +920,86 @@ Public attributes: name, age – accessible directly.
 Dynamic attributes: can add colour anytime.
 Deletion: del removes attribute from __dict__.
 Name mangling: double underscores create _ClassName__attr to avoid conflicts.
+
+--
+class.__name__ показывает название класса type(my_pet).__name__
+class.__module__ показывает название модуля хранящего определение класса print(Dog.__module__)
+hasattr(obj, 'attr') проверяет доступность атрибута через обычный интерфейс Python.
+__dict__ показывает реальные имена атрибутов, хранящиеся внутри объекта, включая приватные после name mangling.
+class Dog:
+    def __init__(self, name):
+        self.name = name
+        self.__secret = "I love bones!"
+
+my_dog = Dog("Teddy")
+
+# --- Проверка через hasattr ---
+print(hasattr(my_dog, 'name'))       # True, атрибут публичный
+print(hasattr(my_dog, '__secret'))   # False, name mangling скрывает атрибут
+print(hasattr(my_dog, '_Dog__secret'))  # True, доступ через name mangling
+
+# --- Проверка через __dict__ ---
+print(my_dog.__dict__)  
+# {'name': 'Teddy', '_Dog__secret': 'I love bones!'}
+
+print('_Dog__secret' in my_dog.__dict__)  # True
+print('__secret' in my_dog.__dict__)      # False
+
+--
+instance variables уникальна для каждого объекта. задаются внутри __init__ через self. self.name = name. стирает переменную класса  # instance variable
+class variables общая для всех объектов класса. задаются внутри класса, но вне методов. species = "Canis familiaris"  # class variable
+local method variable  variable = ''
+
+# Define a class House
+class House:
+    counter = 0 # Class variable to count the number of House instances
+    def __init__(self, address, area, price): # Constructor (initializer) with instance variables
+        self.address = address   # Instance variable
+        self.area = area         # Instance variable 
+        self.price = price       # Instance variable
+        House.counter += 1       # Increment class variable for each new instance
+
+		House.quality = 'low'	#class variables
+		self.quality = 'medium'	#instance variables
+		quality = 'hight'	#local method variable
+
+    def present(self): # Method to present house details
+        print(f"The house at {self.address} has an area of {self.area} and costs {self.price}")
+
+soho_house = House('12 Lexington St, Soho', 130, 540000) # Create an instance of House
+soho_house.present() # Call the instance method
+print(House.counter) # Print the total number of House instances
+
+--
+# Define a Doctor class
+class Doctor:
+    def __init__(self, first_name='John', last_name='Smith'):  # Constructor with default arguments
+        self.first_name = first_name    # instance variable
+        self.last_name = last_name      # instance variable
+        self.format_names()             # capitalize names immediately
+
+    def format_names(self): # Method to capitalize the first and last name
+        self.first_name = self.first_name.title()
+        self.last_name = self.last_name.title()
+
+    def introduce(self): # Method to introduce the doctor
+        print('Hi, I am', self.first_name)
+  
+    def compare_name(self, name_to_compare):  # Method to compare the first name with another name
+        if self.first_name == name_to_compare:
+            print('We have the same name!')
+        else:
+            print('Sorry, my name is different...')
+  
+    def get_first_last_name_together(self):  # Method to return full name together
+        return self.first_name + ' ' + self.last_name
+
+doc_alex = Doctor('Alexander', 'SMith') # Create an instance of Doctor
+
+# Call methods AND PYTON AUTOMATICALLY TAKES ARGUMENTS PARAMETERS FROM OBJECT
+doc_alex.introduce()                       # Hi, I am Alexander
+doc_alex.compare_name("John")              # Sorry, my name is different...
+print(doc_alex.__dict__)                   # {'first_name': 'Alexander', 'last_name': 'Smith'}
+print(Doctor.__dict__)                     # Dictionary of class attributes and methods
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
