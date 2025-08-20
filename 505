@@ -320,19 +320,112 @@ Supervised learning
 - That value is called a **feature** and is denoted as \(x_i^{(j)}\).  
 - The **label** \(y_i\) can be:  
   - an element belonging to a finite set of classes \(\{1, 2, \dots, C\}\),  
-  - a real number, or
+  - a real number, or a graf
+The goal is to use the dataset to produce a model
+The model takes a feature vector x as input
+It outputs information that allows deducing the label y for this feature vector
 
+In machine learning domain we have several types of mathematical objects:
+Scalar Vector Matrix Tensor
 
+Classification vs Regression
+Regression
+What will be the temperature tomorrow?
+Classification
+Will it be hot or cold tomorrow?
+Регрессия (Regression):
+Предсказывает непрерывное значение.
+Непрерывное значение — это значение, которое может принимать любое число в определённом диапазоне, а не ограниченное количество категорий.
+Примеры:
+Температура: 23.5°C, 24.1°C, 23.99°C
+Цена дома: 150000, 150250.5, 150123.75
+Вес человека: 70.2 кг, 70.25 кг
+Пример: «Какая будет температура завтра?»
+Результат может быть любым числом в диапазоне возможных температур, например 23.5°C.
+Классификация (Classification):
+Предсказывает категорию или класс.
+Пример: «Будет ли завтра жарко или холодно?»
+Результат принадлежит к конечному набору классов, например «жарко» или «холодно».
+Quantitative and Qualitative variables
+Quantitative variables take on numerical values
+Examples include a person's age or income
+Qualitative variables take on values in one of C different classes, or categories
+E.g., a cancer diagnosis (yes or no)
+Regression
+Refers to problems with a quantitative target label
+Classification
+Refers to problems with a qualitative target label
+Classification
+Goal: Predict a category or class label.
+Output: Discrete values (e.g., "yes"/"no", "spam"/"not spam", digits 0-9).
+Examples:
+Email spam detection (spam or not)
+Disease diagnosis (positive or negative)
+Image recognition (cat, dog, car, etc.)
 
+Regression
+Goal: Predict a numerical value.
+Output: Continuous values (real numbers).
+Examples:
+Predicting house prices
+Forecasting temperature
 
+Regression: Linear Regression, Poisson Regression, Support Vector Regression 
+Classification: Logistic Regression, Decision Tree, Naïve Bayes Classifier, Neural Network
 
+Unsupervised Learning
+The dataset is a collection of unlabeled examples {x}-1
+Again, x is a feature vector
+The goal is to create a model
+The model takes a feature vector x as input
+It either transforms the feature vector into another vector or into a value that can be used to solve a practical problem
 
+| Тип алгоритма                                         | Алгоритмы / Методы                                      |
+| ----------------------------------------------------- | ------------------------------------------------------- |
+| **Clustering (Кластеризация)**                        | K-Means, Hierarchical, Fuzzy C-Means                    |
+| **Dimensionality Reduction (Снижение размерности)**   | Principal Component Analysis (PCA), Kernel PCA          |
+| **Association (Ассоциативные правила / Data Mining)** | Apriori Algorithm, Eclat Algorithm, FP-Growth Algorithm |
 
+Clustering
+Clustering is the task of grouping a set of objects
+In such a way that objects in the same group (called a cluster) are more similar (in some sense) to each other than to those in other groups (clusters).
+For example, a set of customers, a clustering algorithm can group them basec on their similarity
 
+Dimensionality Reduction
+The goal is to simplify the data without losing too much information. One way to do this is to merge several correlated features into one.
 
+Anomaly Detection
+The goal is the identification of rare items, events or observations.
+Which raise suspicions by differing significantly from the majority of the data.
+For example
+Detecting unusual credit card transactions to prevent fraud.
+Catching manufacturing defects.
+Automatically removing outliers from a dataset before feeding it to another learning algorithm.
 
+Semi-Supervised Learning
+The dataset contains both labeled and unlabeled examples
+Usually, the quantity of unlabeled examples is much higher.
+The goal is the same as the goal of the supervised learning algorithm.
+Most semi-supervised learning algorithms are combinations of unsupervised and supervised algorithms
+| Concept / Method            | Description / Example                                                                         |
+| --------------------------- | --------------------------------------------------------------------------------------------- |
+| **Embedding method**        | Представление слов или объектов в виде векторов (*word embeddings*)                           |
+| **Machine learning model**  | Использует векторные представления для задач ML                                               |
+| **Learning task**           | Self-supervised: модель обучается на данных без явных меток (например, «I think \[???] I am») |
+| **Relation to supervision** | Self-supervised ≈ unsupervised + supervised elements                                          |
+| **Meaning**                 | Закладывает смысл и контекст слов в векторное пространство                                    |
 
-
+Reinforcement Learning (akaGPT)
+Reinforcement learning is a subfield of machine learning where the machine "lives" in an environment
+The machine is capable of perceiving the state of that environment as a vector of features
+The machine can execute actions in every state
+Different actions bring different rewards
+Actions could also move the machine to another state of the environment
+The goal is to learn a policy
+A policy is a function (similar to the model in supervised learning)
+The policy takes the feature vector of a state as input
+It outputs an optimal action to execute in that state
+The action is optimal if it maximizes the expected average reward.
 
 
 
