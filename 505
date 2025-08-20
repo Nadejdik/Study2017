@@ -1,3 +1,342 @@
+2025-07-22
+Python in Machine Learning
+Python is the most popular programming language for ML because of its simplicity and rich ecosystem. Its role includes:
+Data Handling
+Libraries: pandas, numpy, PyTorch
+Load, clean, and manipulate datasets
+Data Visualization
+Libraries: matplotlib, seaborn, plotly
+Explore data patterns and distributions
+Model Building
+Libraries: scikit-learn (classical ML), tensorflow, pytorch (deep learning)
+Train models for regression, classification, clustering, etc.
+Evaluation
+Metrics: accuracy, precision, recall, RMSE
+Test model performance on unseen data
+Deployment
+Build APIs or integrate models in applications using Flask, FastAPI, or Streamlit.
+
+RAG (Retrieval-Augmented Generation) in ML
+RAG is a method combining information retrieval with generative models (like GPT) to improve performance on tasks that require knowledge beyond what a model has seen during training.
+How it works:
+Retrieval step: Search a database or document corpus for relevant information based on a query.
+Generation step: Use the retrieved information to generate answers, summaries, or predictions.
+Applications in ML:
+Question answering systems
+Customer support chatbots
+Summarization of documents
+Knowledge-based recommendation systems
+Integration with Python:
+Use Python libraries like transformers (Hugging Face) and faiss (for fast vector search).
+Docker is a tool for containerization, which packages an application and its environment into a single, portable container.
+Why it’s useful in ML:
+Ensures consistent environment: No “it works on my machine” issues.
+Makes it easier to share and deploy ML models.
+Helps manage dependencies: Python version, libraries, CUDA for GPU, etc.
+Basic ML workflow with Docker:
+Create a Dockerfile specifying the environment, Build the Docker image,  Run the container
+
+2. Cloud Platforms in Machine Learning
+Cloud platforms provide on-demand computing resources and services for ML tasks.
+Popular platforms:
+AWS (Amazon Web Services): SageMaker for ML training and deployment
+Google Cloud Platform (GCP): AI Platform, BigQuery, Vertex AI
+Microsoft Azure: Azure ML, Databricks integration
+Why use cloud for ML:
+Scalability: Train large models on multiple GPUs or TPUs.
+Storage: Handle big datasets easily.
+Deployment: Serve models as APIs for applications.
+Managed services: Pre-built pipelines, automated hyperparameter tuning, model monitoring.
+Example ML workflow on cloud:
+Upload dataset to cloud storage (S3, GCS, Azure Blob).
+Train model on cloud GPU/TPU instance.
+Save trained model to cloud storage.
+Deploy model as an API endpoint using cloud ML services.
+
+1. What an LLM Is
+A type of machine learning model designed to understand, generate, and manipulate natural language.
+Trained on massive amounts of text data to learn patterns, grammar, facts, reasoning, and context.
+Examples: GPT-4, BERT, LLaMA, Claude, PaLM.
+2. Key Features
+Text Generation: Can write essays, emails, code, or summaries.
+Text Understanding: Can answer questions, classify text, or extract information.
+Context Awareness: Remembers context across sentences or even longer conversations.
+Few-shot / Zero-shot Learning: Can perform tasks with little or no task-specific training data.
+3. How LLMs Work
+Input: A prompt or query in natural language.
+Processing: The model uses transformer architecture to predict the next word/token based on context.
+Output: Generated text, answer, or recommendation.
+4. Applications in ML
+Chatbots and Virtual Assistants: Customer support, personal assistants.
+Content Creation: Writing articles, summaries, code generation.
+Information Retrieval: Answering questions from large document collections (RAG).
+Translation and NLP Tasks: Sentiment analysis, summarization, language translation.
+5. Using LLMs in Python
+Libraries: transformers (Hugging Face), openai, langchain.
+
+1. What Are Graph Technologies?
+Graph technologies deal with graph data structures, where:
+Nodes (vertices) represent entities (e.g., people, products, devices).
+Edges (links) represent relationships between entities (e.g., friendship, purchase, communication).
+Useful for modeling complex relationships in data that are not easily represented in tables.
+2. Key Concepts
+Graph Types
+Directed / Undirected: Edges have a direction or not.
+Weighted / Unweighted: Edges have values representing strength or cost.
+Heterogeneous: Nodes/edges can have different types.
+Graph Metrics
+Degree: Number of edges per node.
+Centrality: Importance of a node in the network.
+Shortest Path: Minimum distance between nodes.
+Graph Representation
+Adjacency matrix or adjacency list
+Edge list for sparse graphs
+3. Graph Technologies / Tools
+Graph Databases: Store and query graph data efficiently
+Neo4j, Amazon Neptune, TigerGraph
+Graph Analytics & ML Libraries:
+Python: networkx (graph algorithms), PyTorch Geometric (GNNs), DGL (Deep Graph Library)
+4. Applications in Machine Learning
+Social Networks: Recommend friends, detect communities.
+Knowledge Graphs: Represent facts and relationships (e.g., Google Knowledge Graph).
+Fraud Detection: Detect suspicious patterns in transaction networks.
+Supply Chain / Logistics: Optimize routes and relationships.
+Molecular / Drug Discovery: Analyze chemical compounds as graphs.
+5. Graph Neural Networks (GNNs)
+Specialized neural networks designed to work on graph-structured data.
+Capture node features and relationships to make predictions:
+Node classification (e.g., predict user type)
+Link prediction (e.g., recommend connections)
+Graph classification (e.g., molecule property prediction)
+Using PyTorch Geometric
+
+What is Machine Learning?
+ARTIFICIAL INTELLIGENCE
+A technique which enables machines
+to mimic human behaviour
+MACHINE 
+Subset of Al technique which use statistical methods to enable machines to improve with experience
+DEEP LEARNING
+Subset of ML which make the computation of multi-layer neural network feasible
+Machine learning (ML) is a branch of artificial intelligence (Al) focused on enabling computers and machines to imitate the way that humans learn, to perform tasks autonomously, and to improve their performance and accuracy through experience and exposure to more data.
+
+We give Ml:
+A dataset (e.g., labeled pictures of fruits) - ML is about learning patterns from data, not hardcoded rules.
+A learning algorithm (e.g., decision trees, neural networks) - Algorithms improve with experience (data).
+A task (e.g., classify new images) - The quality of learning depends on data, algorithm, and task fit.
+
+Rule-based systems vs Machine Learning systems
+Rule-based systems use predefined rules created by humans to make decisions.
+A) Rulebase Example
+IF
+"yes" is equal to uniform_layer_flow
+THETA is greater than 45.0
+THETA is less than or equal to 90.0
+C4 is greater than (Lm/(0.8*(Hs-H0)))
+C6 is greater than (Lb/(0.8*(Hs-H0)))
+C9 is less than or equal to (Lt/(0.8^(Hs-H0)))
+Then
+flow_type_ok is confirmed
+"V2" is asssigned to flow_type
+"No" is assigned to wake_attachment
+Find coanda_attachment_value
+ 
+You are tasked with building a simple rule-based email spam filter.
+The function rule_based_classifier takes in an email and labels it as 'spam' if it contains any of a few known spam keywords (e.g., "buy now", "free", etc.). Otherwise, it labels the email as 'ham' (non-spam).
+def rule_based_classifier(email):
+    spam_keywords = ["buy now", "free", "click here", "limited time offer", "urgent"] # Define a list of spam keywords that commonly appear in spam emails    
+    email_lower = email.lower() # Convert the email text to lowercase to make keyword matching case-insensitive
+    for keyword in spam_keywords: # Loop through each spam keyword
+        if keyword in email_lower: # If the keyword appears anywhere in the email, classify it as 'spam'
+            return 'spam'
+    return 'ham' # If none of the spam keywords are found, classify the email as 'ham' (not spam)
+
+Simple problems:
+For which existing solutions require a lot of hand-tuning or long lists of rules
+One machine learning algorithm can often simplify code and perform better
+Complex problems:
+For which there is no good solution at all using a traditional approach
+The best machine learning techniques can find a solution
+Fluctuating environments:
+A machine learning system can adapt to new data
+Getting insights:
+About complex problems and large amounts of data
+
+| Feature / Aspect          | Rule-based Systems                         | Machine Learning Systems                           |
+| ------------------------- | ------------------------------------------ | -------------------------------------------------- |
+| Flexibility               | Flexible                                   | Easy to scale                                      |
+| Development speed         | Slow parser development                    | Fast development (if datasets available)           |
+| Debugging                 | Easy to debug                              | Difficult to debug                                 |
+| Training data requirement | Doesn't require a massive training corpus  | Requires training corpus with annotation           |
+| Understanding of language | Understanding of the language phenomenon   | No understanding of the language phenomenon        |
+| Precision / Recall        | High precision, moderate recall (coverage) | High recall (coverage)                             |
+| Learnability              | Requires skilled developers and linguists  | "Learnability" without being explicitly programmed |
+
+     Email Dataset                               #Instance Gathering
+           │
+   ┌───────┴────────┐
+   │                │
+Training Set (80%)  Testing Set (20%)            #Training & Testing 
+           │                │
+           └──────┬─────────┘
+                  │
+              Spam / Ham                        # Classification
+
+Automatically learning of patterns
+A spam filter based on machine learning techniques automatically learns which words and phrases are good predictors of spam
+By detecting unusually frequent patterns of words in the spam examples compared to the ham examples
+
+Application of ML
+1. Healthcare and Medical Diagnosis
+Disease Detection: ML models are used to identify diseases like cancer, pneumonia and Parkinson's from medical images. They often achieve accuracy comparable to or better than human doctors.
+Predictive Analytics: By analyzing patient history and symptoms, models can predict the risk of certain diseases or potential complications.
+Drug Discovery: ML accelerates the drug development process by predicting how different compounds will interact, reducing the time and cost of research.
+https://www.youtube.com/watch?v=mkiDXTS6-mU
+2. Personalized Recommendations and User Experience
+Streaming Platforms: Netflix and Spotify suggest shows and songs based on your watching or listening history.
+E-commerce: Sites like Amazon recommend products tailored to your preferences, browsing patterns and past purchases.
+Social Media: Algorithms curate content feeds, prioritize posts and suggest friends or pages.
+https://www.youtube.com/watch?v=3gJmhoLaLIo
+3. Smart Assistants and Human-Machine Interaction
+Voice Assistants: Tools like Siri, Alexa and Google Assistant convert spoken input into actionable commands.
+Voice Search & Transcription: ML enables users to perform hands-free web searches and get transcription during meetings or phone calls.
+Chatbots: Businesses use Al-powered chatbots for 24/7 customer support, helping resolve queries faster and more efficiently.
+https://youtu.be/7TT4vFWY3BU?si=uK-EDoaoAX4Eduq-
+4. Autonomous Vehicles and Smart Mobility
+Computer Vision: Recognizing lanes, pedestrians, traffic signals and obstacles.
+Sensor Fusion: Combining data from cameras, LiDAR and radar for a 360-degree view.
+Behavior Prediction: Anticipating how other drivers or pedestrians may act.
+https://www.youtube.com/watch?v=C2rbym6bXM0
+
+Machine Learning pipeline:
+Data Acquisition → Data Cleaning → Data Transformation → Feature Engineering → Modeling → Evaluation → Deployment → Monitoring & Updating
+                                      ↑                                                  │
+                                      └────────── Improving Model ───────────────────────┘
+Data Acquisition – Collect raw data from databases, sensors, APIs, or files.
+Data Cleaning – Handle missing values, remove duplicates, and fix errors.
+Data Transformation – Normalize, scale, or encode data into usable formats.
+Feature Engineering – Select or create the most relevant features for the model.
+Modeling – Train machine learning algorithms on the prepared data.
+Evaluation – Test the model on unseen data, measure accuracy/metrics.
+If performance is poor → improve model or revisit earlier steps.
+Deployment – Put the trained model into production (API, app, system).
+Monitoring & Updating – Track performance over time, retrain when data or patterns change.
+
+Generic Machine Learning pipeline: Data Ingestion/Collection
+Purpose: Gathering raw data from various sources (databases, APIs, files, streaming platforms, etc.).
+Tasks: Identifying relevant data sources, collecting data, and initial data validation (checking for completeness, consistency).
+There are various strategies for gathering relevant data:
+Use public datasets
+Use public APIs
+Data augmentation
+https://datasetsearch.research.google.com/
+(kaggle, Google, Dataset Search Beta, VisualData, UC Irvine, Machine Learning Repository, OpenML, DATA HUB, DATA, HealthData.gov, Hugging Face, MNIST Dataset, IMDB dataset)
+
+Using public API
+| API           | Description                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| IPstack       | Locate and identify website visitors by IP address                                                      |
+| Marketstack   | Free, easy-to-use REST API interface delivering worldwide stock market data in JSON format              |
+| Weatherstack  | Retrieve instant, accurate weather information for any location in the world in lightweight JSON format |
+| Numverify     | Global phone number validation & lookup JSON API                                                        |
+| Fixer         | Simple and lightweight API for current and historical foreign exchange (forex) rates                    |
+| Aviationstack | Free, real-time flight status and global aviation data API                                              |
+| API                | Use Case                                   |
+| ------------------ | ------------------------------------------ |
+| Reddit API         | Opinion mining, conversational modeling    |
+| News API           | Topic modeling, news summarization         |
+| YouTube Data API   | Emotion analysis, speech-to-text data      |
+| Wikipedia API      | Pretraining language models, summarization |
+| Stack Exchange API | Intent classification, question answering  |
+
+Data Augmentation
+Data augmentation is the process of increasing the diversity and size of training datasets without actually collecting new data.
+This is especially valuable when datasets are small or imbalanced, and it helps improve model generalization, reduce overfitting, and boost performance.
+
+Original Image → Horizontal → 
+                  Vertically → 
+                  +45 Rotation → 
+                  -45 Rotation →             
+                  Blur →                             │  
+                  Brighter →                         └─> "This is very cool" IMAGE -> / "This is pretty cool" / "This is really cool" / "This is super cool" / "This is kinda cool"
+                  Noise Added → 
+                  Darker → 
+                  Grayscale → 
+                  Crop → 
+                  Augmented Images
+
+Generic Machine Learning pipeline: Data Cleaning
+Purpose: Transforming raw data into a clean, structured, and suitable format for ML analysis. 
+Tasks:
+Handling Missing Values
+Handling Outliers
+Data Cleaning
+Handling Missing Values:
+Missing values are data points that are absent for a specific variable in a dataset.
+Handling Outliers
+An outlier is also a data point that is drastically different from the other records in the dataset, with the differences being either too high or too low when compared to the rest of the observations.
+Data Cleaning
+@YMourri and @AndrewYNg are tuning a GREAT Al model at https://deeplearning.ai!!!
+Preprocessed tweet:[tun, great, ai, model]
+
+      Feature rngineering
+Feature extraction/engineering is an important step for any machine learning problem
+No matter how good a modeling algorithm you use, if you feed in poor features, you will get poor results
+In computer science, this is often called "garbage in, garbage out"
+Feature representation is a common step in any ML project
+Whether the data is text, images, videos, or speech
+A digital black-white image image contains discrete number of pixels.
+The image is stored in a computer in the form of a matrix of pixels.
+The real value stored at cell[i,j] represents the intensity of the corresponding pixel in the image
+Pixel value: shows an intensity
+pixel(x,y) value"grayscale" 75
+A digital color image image contains discrete number of pixels
+-Pixel value: shows an intensity value
+"grayscale"
+"color"
+f(x, y) =r(x, y)g(x, y)b(x, y)
+[90, 0, 53][249, 215, 203][213, 60, 67]
+A video is just a collection of frames where each frame is an image
+Hence, any video can be represented as a sequential collection of matrices, one per frame, in the same order.
+But it turns out that representing text is not straightforward
+In contrast to images, video, and speech that can be mathematically represented in a straightforward manner
+The conversion of raw text to a suitable numerical form is called text representation
+Text representation has been an active area of research in the past decades.
+Feature: Word | Word embedding | Dimensionality reduction | Visualization of word embeddings in 2D
+
+Types of Machine Learning Algorithms
+| **Category**                   | **Types**                                                                                    |
+| ------------------------------ | -------------------------------------------------------------------------------------------- |
+| **Based on the Task**          | Supervised learning, Unsupervised learning, Semi-supervised learning, Reinforcement learning |
+| **Based on Updating Approach** | Batch learning, Online learning                                                              |
+| **Based on Generalization**    | Instance-based learning, Model-based learning                                                |
+| **Based on Data Assumptions**  | Parametric algorithms, Nonparametric algorithms                                              |
+
+Supervised learning
+- A **dataset** is a collection of labeled examples:  
+  \{(x_i, y_i)\}_{i=1}^N
+- Each element \(x_i\) among \(N\) is called a **feature vector**.  
+- A **feature vector** is a vector in which each dimension \(j = 1, \dots, D\) contains a value that describes the example.  
+- That value is called a **feature** and is denoted as \(x_i^{(j)}\).  
+- The **label** \(y_i\) can be:  
+  - an element belonging to a finite set of classes \(\{1, 2, \dots, C\}\),  
+  - a real number, or
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 2025-07-29
 https://www.youtube.com/watch?v=SUbqykXVx0A
 The machine is capable of perceiving the state of that environment as a vector of features
@@ -311,5 +650,76 @@ Choose the task type: Frame it as a classification, regression, or other ML task
 Classification → predicting categories (e.g., churn or not).
 Regression → predicting a continuous value (e.g., sales amount).
 Identify available data – Gather data that links inputs (features) to the target.
+
+Example:
+If a product manager says, “We need to know if a customer will stay with us," you can frame this as a classification task where the model predicts whether a customer is likely to stay (1) or leave (0).
+A set of business problems phrased as real-world scenarios.
+Exercise: Business Problem Understanding
+You can be asked to decide how to formulate them into machine learning tasks:
+A real estate company wants to estimate the price of a house based on features like location, size, and age.
+Answer: This is a regression problem because the target variable (price) is a continuous number.
+A manufacturing company wants to detect faulty products on the assembly line using images.
+Answer: This is a classification problem because the model must assign each product to a category: "faulty" or "not faulty."
+"A hospital wants to group patients with similar symptoms to discover unknown disease subtypes.
+Answer: This is a clustering problem because the goal is to group patients based on similarity in their symptoms without predefined labels, in order to discover unknown disease subtypes.
+Answer: This is a clustering problem (unsupervised learning) since there are no predefined labels; the goal is to discover natural groupings in the data.
+
+Data Collection
+We then need to collect relevant data for the task
+E.g., "here are the logs of customers' interactions with our product for five years"
+It is better to right away split the data into train and test
+To not learn anything from the test set
+
+i.i.d. Datasets vs Time Series Datasets
+In i.i.d. (independent and identically distributed) datasets, the data points are independent:
+Allowing for random splits between training and test sets.
+In time series datasets, the data points have a temporal order:
+So, splitting randomly would break the temporal structure and introduce data leakage.
+Instead, the data should be split chronologically, ensuring the model learns from past data to predict future outcomes.
+| Feature 1 | Feature 2 | Label |
+| --------- | --------- | ----- |
+| 5         | 2.3       | Yes   |
+| 3         | 4.1       | No    |
+| 7         | 2.1       | Yes   |
+
+| Time       | Feature 2 | Label |
+| ---------- | --------- | ----- |
+| 01.12.2000 | 2.3       | Yes   |
+| 02.12.2000 | 4.1       | No    |
+| 03.12.2000 | 2.1       | Yes   |
+
+1. Finance
+Example: Stock Prices
+Dataset: Daily closing prices of Apple (AAPL) from 2010 to 2025.
+Fields: Date, Open, High, Low, Close, Volume
+Application: Forecasting future prices, volatility analysis, algorithmic trading
+2. Healthcare
+Example: Patient Heart Rate Monitoring
+Dataset: Heart rate recorded every minute from wearable devices.
+Fields: Timestamp, Heart Rate (BPM), Patient ID
+Application: Detecting arrhythmia, stress monitoring, early warning systems
+
+Business Problem:
+A real estate company wants to estimate the price of a house based on features like location, size, and age.
+Question: Find publicly available datasets you can use for the housing price estimation business problem
+Exploratory Data Analysis
+House Price Prediction Dataset
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
