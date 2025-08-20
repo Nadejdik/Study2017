@@ -1,0 +1,315 @@
+2025-07-29
+https://www.youtube.com/watch?v=SUbqykXVx0A
+The machine is capable of perceiving the state of that environment as a vector of features
+The machine can execute actions in every state
+Different actions bring different rewards
+Actions could also move the machine to another state of the environment
+
+Reinforcement learning is a subfield of machine learning where the machine
+"lives" in an environment
+Semi-Supervised Learning
+Embedding method
+Machine learning model
+Learning task
+"I think [???] I am"
+Self-supervised = unsupervised + supervised
+Meaning
+Word embeddings
+Tasks (e.g., Classification, Regression)
+The dataset contains both labeled and unlabeled examples
+Usually, the quantity of unlabeled examples is much higher.
+The goal is the same as the goal of the supervised learning algorithm.
+Most semi-supervised learning algorithms are combinations of unsupervised and supervised algorithms
+For example
+Detecting unusual credit card transactions to prevent fraud.
+Catching manufacturing defects.
+Automatically removing outliers from a dataset before feeding it to another learning algorithm.
+The goal is the identification of rare items, events or observations.
+Which raise suspicions by differing significantly from the majority of the data.
+The goal is to simplify the data without losing too much information.
+One way to do this is to merge several correlated features into one.
+Clustering is the task of grouping a set of object
+In such a way that objects in the same group (called a cluster) are more similar (in some sense) to each other than to those in other groups (clusters).
+Training set
+Feature 2
+For example, a set of customers, a clustering algorithm can group them basec on their similarity
+
+Unsupervised Learning
+Clustering	
+- K-Means
+- Hierarchical
+- Fuzzy C-Means
+- Polynomial
+Dimensionality Reduction	
+- Principal Component Analysis (PCA)
+- Kernel Principal Analysis
+Association (Data Mining)	
+- Apriori Algorithm
+- Eclat Algorithm
+- FP-Growth Algorithm
+
+N The dataset is a collection of unlabeled examples {x}=1
+Again, x is a feature vector
+The goal is to create a model
+The model takes a feature vector x as input
+It either transforms the feature vector into another vector or into a value that can be used to solve a practical problem
+
+Regression:
+Linear Regression
+Poisson Regression
+Logistic Regression
+Support Vector Regression
+Neural Network
+
+Classification:
+Decision Tree
+Naïve Bayes Classifier
+Neural Network
+Support Vector Regression (если считать классификацию отдельной)
+
+Classification:
+Goal: Predict a category or class label
+Output: Discrete values (e.g., "yes"/"no", "spam"/"not spam", digits 0–9)
+Examples:
+Email spam detection (spam or not)
+Disease diagnosis (positive or negative)
+Image recognition (cat, dog, car, etc.)
+
+Regression:
+Goal: Predict a numerical value
+Output: Continuous values (real numbers)
+Examples:
+Predicting house prices
+Forecasting temperature
+Value
+
+Quantitative and Qualitative variables
+Quantitative variables take on numerical values
+Examples include a person's age or income
+Qualitative variables take on values in one of C different classes, or categories
+E.g., a cancer diagnosis (yes or no
+Regression - Refers to problems with a quantitative target label
+Classification - Refers to problems with a qualitative target label
+
+Supervised Learning: Classification - Regression
+
+Dataset notation:
+
+𝑁={(𝑥𝑖,𝑦𝑖)}=𝑁𝑖=1— our dataset (table)
+𝑁=4 is the total number of data points (rows)
+D=3 — total number of features (columns, excluding the target label column)
+
+𝑋1 - is the first feature vector
+𝑥3  — third feature of the second feature vector 
+𝑦3 — target label of the third feature vector
+
+Example features (for a housing dataset):
+Rooms|Area|District|Price (target label)
+
+Supervised Learning
+The goal is to use the dataset to produce a model
+The model takes a feature vector x as input
+It outputs information that allows deducing the label y for this feature vector
+The dataset is the collection of labeled examples {(xi, Yi)}=1
+Each element x₁ among N is called a feature vectorA feature vector is a vector in which each dimension j = 1, ..., D contains a value that describes the example somehow
+That value is called a feature and is denoted as x) (x superscript j)
+The label y₁ can be either an element belonging to a finite set of classes {1, 2,..., C}, or a real number, or a more complex structure
+Like a vector, a matrix, a tree, or a graph
+
+Types of Machine Learning Algorithms
+1. Based on the task:
+Supervised learning
+Unsupervised learning
+Semi-supervised learning
+Reinforcement learning
+2. Based on the updating approach:
+Batch learning
+Online learning
+3. Based on generalization approach:
+Instance-based learning
+Model-based learning
+4. Based on the assumptions about data:
+Parametric algorithms
+Nonparametric algorithms
+
+Machine Learning pipeline:
+Data Acquisition → Data Cleaning → Data Transformation → Feature Engineering → Modeling → Evaluation(→ Improving the Model->Data trans) → Deployment → Monitoring and Model Updating 
+
+Batch Learning:
+Train → Train  → Model⬇  -----⬇
+      In time   Validation    ⬇
+Test ---------------→     Scoring
+
+Online Learning:
+Assumed Model → Covariates of Observation 1 →  Prediction → (+ Actual Response) → Evolved Model → (Covariates of Observation 2) → Prediction
+
+| **Perspective**                | **Batch Learning**                            | **Online Learning**                                               |
+| ------------------------------ | --------------------------------------------- | ----------------------------------------------------------------- |
+| **When is data available?**    | All data is available up front                | Data arrives sequentially over time                               |
+| **How is the model trained?**  | Trained once on a full dataset                | Updated continuously with each new data point                     |
+| **When is the model updated?** | Only when retrained (offline)                 | After every observation (real-time)                               |
+| **Ideal use case**             | Static environments (e.g., medical diagnosis) | Dynamic environments (e.g., stock prices, recommendation systems) |
+
+Batch Learning
+Batch learning involves training a model on a the entire dataset, and then used to make predictions on new data.
+Batch learning is commonly used in situations where the dataset is relatively small and can be processed quickly.
+If you want a batch learning system to know about new data (such as a new type of spam), you need to:
+First, train a new version of the system from scratch on the full dataset (Not just the new data, but also the old data)->
+Then, stop the old system and replace it with the new one
+
+Online learning
+Online learning, also known as incremental learning or streaming learning, involves training a model on new data as it arrives, one observation at a time.
+The model is updated each time a new observation is received, allowing it to adapt to changes in the data over time.
+Online learning is commonly used in situations where the data is too large to be processed all at once, or where the data is constantly changing, such as in stock market data or social media data.
+
+Instance-Based vs Model-Based Learning
+| **Perspective**                   | **Instance-Based Learning**                      | **Model-Based Learning**                           |
+| --------------------------------- | ------------------------------------------------ | -------------------------------------------------- |
+| **How is knowledge stored?**      | Keeps the training data (instances)              | Learns a general model from the data               |
+| **How does it make predictions?** | By comparing new input to stored examples        | By applying a learned function or parameters       |
+| **When does learning happen?**    | Mostly at prediction time (lazy learning)        | During training phase (eager learning)             |
+| **Examples**                      | k-Nearest Neighbors (k-NN), Case-Based Reasoning | Linear Regression, Decision Trees, Neural Networks |
+
+Idea: "Remember and compare."
+It keeps all the examples and looks at the most similar ones when making a prediction.
+Example: k-Nearest Neighbors (k-NN)
+vs
+Idea: "Learn a pattern."
+It creates a model from the training data and uses it to predict new results.
+Examples: Linear Regression, Neural Networks
+
+Parametric and Nonparametric Algorithms
+What Parametric Algorithms do: Assume the data follows a known shape (like a straight line).
+They learn: A fixed number of parameters (e.g., slope & intercept in a line).
+Fast to train, but less flexible.
+Examples:
+Linear Regression
+Logistic Regression
+Naive Bayes
+vs
+What Nonparametric Algorithms do: Don't assume a fixed shape or number of parameters.
+They learn patterns freely from the data, even if it's complex.
+More flexible, but need more data.
+Examples:
+k-Nearest Neighbors (k-NN)
+Decision Trees
+Random Forests
+Support Vector Machines (with kernels)
+
+| **Aspect** | **Hyperparameters**                                     | **Parameters**       | **Score** |
+| ---------- | ------------------------------------------------------- | -------------------- | --------- |
+| Example 1  | n\_layers = 3, n\_neurons = 512, learning\_rate = 0.1   | Weights optimization | 85%       |
+| Example 2  | n\_layers = 3, n\_neurons = 1024, learning\_rate = 0.01 | Weights optimization | 80%       |
+| Example 3  | n\_layers = 5, n\_neurons = 256, learning\_rate = 0.1   | Weights optimization | 92%       |
+
+Параметры (parameters) — это веса модели, которые она сама подбирает во время обучения.
+Гиперпараметры (hyperparameters) — это настройки, которые задаёт человек до обучения (например, количество слоёв, скорость обучения).
+Parameters
+Are variables that define the model
+Are directly modified by the learning algorithm based on the training data
+The goal of learning is to find such values of parameters that make the model optimal in a certain sense
+Hyperparameters
+Are properties of a learning algorithm, usually having a numerical value
+Influence the way the algorithm works
+Are not learned by the algorithm itself from data
+They have to be set by the data analyst before running the algorithm.
+
+Evalustion - Measuring the Quality of Fit
+We need some way to measure how well its predictions actually match the observed data
+To evaluate the performance of a statistical learning method on a given data set
+The most commonly-used measure
+For regression is the mean squared error (MSE)
+For classification is the accuracy
+
+| **Metric**                   | **Use For**    | **Goal**                     | **Formula Meaning**                              | **Formula**                                                    |
+| ---------------------------- | -------------- | ---------------------------- | ------------------------------------------------ | -------------------------------------------------------------- |
+| **MSE (Mean Squared Error)** | Regression     | Minimize error               | Penalizes squared differences                    | $\text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - f(x_i))^2$     |
+| **Accuracy**                 | Classification | Maximize correct predictions | Measures match between true and predicted labels | $\text{Accuracy} = \frac{1}{N} \sum_{i=1}^{N} 1(y_i = f(x_i))$ |
+MSE (Среднеквадратичная ошибка)
+Используется для регрессии (когда мы предсказываем число).
+Смысл: чем меньше MSE, тем лучше модель.
+Она сильно штрафует большие ошибки, то есть если модель промахнулась далеко, это заметно ухудшает результат.
+Accuracy (Точность)
+Используется для классификации (когда мы предсказываем класс, например «да/нет»).
+Смысл: показывает, какая доля предсказаний совпала с правильными ответами.
+Чем ближе к 100%, тем лучше модель.
+
+Training Set vs Test Set
+Training set | Validation Test Set | Test Set
+Train on training set, tune on validation, report on testset
+This avoids overfitting ('tuning to the test set')
+More conservative estimate of performance
+
+Underfitting
+Your model is underfitting the training data when the model performs poorly on the training data. This is because the model is unable to capture the relationship between the input examples and the target values.
+Overfitting
+Your model is overfitting your training data when you see that the model performs well on the training data but does not perform well on the evaluation data. This is because the model is memorizing the data it has seen and is unable to generalize to unseen examples.
+Add More Training Data – More data helps the model generalize better.
+Use Regularization (L1/L2, Dropout)
+L1/L2 Regularization (Ridge/Lasso) adds a penalty to large weights.
+Dropout (for neural networks) randomly deactivates neurons during training.
+Early Stopping - Stop training when validation loss stops improving.
+Reduce Model Complexity - Decrease the number of layers, neurons, or use a simpler algorithm.
+Use Data Augmentation - Apply transformations like rotation, flipping, cropping (for images), or synonyms and paraphrasing (for text).
+Cross-Validation - Use techniques like k-fold cross-validation to ensure the model generalizes well.
+Hyperparameter Tuning – Adjust parameters like learning rate, batch size, number of trees (for decision trees), etc.
+But paradox: want as much data as possible for training, and as much for validation; how to split?
+
+Cross-validation:
+K-folds (K-Fold Cross-validation In cross-validation, we choose a number k, and partition our data into k disjoint subsets called folds.)
+Bootstrapping
+Hold-out
+Leave-one-out
+Leave-p-out
+Stratified K-folds
+Repeated K-folds
+Nested K-folds
+Complete
+
+Training error
+-The MSE/accuracy can be computed using the training data that was used to fit the model
+-It is referred to as the training MSE (or accuracy)
+Test error
+-Rather, we are interested in the correctness of the predictions that we obtain when we apply our method to previously unseen test data
+-It is referred to as the test MSE/accuracy
+We want to choose the method that gives the lowest test MSE (or highest test accuracy)
+
+этапы пайплайна Data Science / Machine Learning:
+| **Stage**                          | **Tasks / Actions**                                                                                                                                                             |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Business Problem Understanding** | Defining the problem, Formulating it as a DS/ML task                                                                                                                            |
+| **Data Collection**                | Identifying data sources, Integrating datasets, Splitting the data into training and test sets                                                                                  |
+| **Data Exploration**               | Deciding on evaluation metrics, Deciding on data cleaning strategies, Deciding on resampling, Deciding on encoding categorical attributes, Deciding on dimensionality reduction |
+| **Data Preprocessing**             | Data cleaning, Data resampling                                                                                                                                                  |
+| **Feature Engineering**            | Feature extraction, Feature selection, Feature transformation, Dimensionality reduction                                                                                         |
+| **Model Training**                 | Algorithm selection, Hyperparameter tuning, Model validation                                                                                                                    |
+| **Model Evaluation**               | Test set preparation, Applying the trained model, Computing the evaluation metrics                                                                                              |
+| **Post-Modeling Steps**            | Model deployment, Model monitoring and updating, Model explanation, Online evaluation with A/B testing, Building dashboards, Data-driven decision making                        |
+
+
+Scikit-Learn Key Features библиотека для машинного обучения в Python
+Consistent API Design: Provides a uniform interface across different machine learning algorithms, making it easy to switch models with minimal code changes.
+Built-in Datasets: Includes several small, standard datasets like Iris and Digits for testing and experimentation.
+Preprocessing Tools: Offers functions for scaling, normalizing, encoding categorical variables, imputing missing values, and more.
+Wide Range of Algorithms: Supports various models for classification, regression, clustering, and dimensionality reduction.
+Model Evaluation Metrics: Includes functions to calculate accuracy, precision, recall, F1-score, ROC AUC, and other metrics to assess model performance.
+
+How do you turn a real-world business problem into a machine learning task?
+Why should data be split into training and test sets at the very beginning of a project?
+What is the difference between i.i.d. datasets and time series datasets, and why does it matter for data splitting?
+What are common issues in raw data (e.g., missing values, outliers, imbalanced classes) that must be addressed before modeling?
+
+You turn a real-world business problem into a machine learning task by translating the goal into a clear prediction or decision that an algorithm can learn from data.
+Steps:
+Understand the goal: Identify what the business wants to achieve (We need to predict whether a particular customer will stay with us).
+Define the prediction target: Decide what you are trying to predict (e.g., churn = Yes/No).
+Business Problem Understanding > Data Collection > Data Exploration > Data Preprocessing > Feature Engineering > Model Training > Model Evaluation
+
+You turn a real-world business problem into a machine learning task by translating the goal into a clear prediction or decision that an algorithm can learn from data.
+Steps:
+Choose the task type: Frame it as a classification, regression, or other ML task based on the target:
+Classification → predicting categories (e.g., churn or not).
+Regression → predicting a continuous value (e.g., sales amount).
+Identify available data – Gather data that links inputs (features) to the target.
+
+
