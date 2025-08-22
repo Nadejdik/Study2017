@@ -36,6 +36,9 @@ Helps manage dependencies: Python version, libraries, CUDA for GPU, etc.
 Basic ML workflow with Docker:
 Create a Dockerfile specifying the environment, Build the Docker image,  Run the container
 
+machine learning algorithms
+Linear Regression, Logistic Regression, KNN(K-Nearest Neighbours), Support Vector, Machines (SVM), Decisions Trees, Naive Bayes
+
 2. Cloud Platforms in Machine Learning
 Cloud platforms provide on-demand computing resources and services for ML tasks.
 Popular platforms:
