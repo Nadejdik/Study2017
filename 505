@@ -38,6 +38,19 @@ Create a Dockerfile specifying the environment, Build the Docker image,  Run the
 
 machine learning algorithms
 Linear Regression, Logistic Regression, KNN(K-Nearest Neighbours), Support Vector, Machines (SVM), Decisions Trees, Naive Bayes
+advanced complicated and interesting machine learning
+.Supervised Learning(we use labeled data sets to train algorithms to classify data or predict outcomes), using a 
+classification model, customer retention have historical data for the customer
+regression, we build an equation using various input values with their specific weights determined by the overall value of their impact on the outcome, Airlines rely heavily on various input factors to predict an accurate dollar value for how much they should be charging
+.Unsupervised Learning, analyze and cluster unlabeled data sets, discover hidden patterns or groupings without the need for human intervention right so we're using unlabeled data here
+clustering,  when organizations try to do customer segmentation
+Semi-Supervised Learning, Reinforcement Learning, 
+
+
+
+
+
+
 
 2. Cloud Platforms in Machine Learning
 Cloud platforms provide on-demand computing resources and services for ML tasks.
