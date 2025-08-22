@@ -5,7 +5,7 @@ Data Handling
 Libraries: pandas, numpy, PyTorch
 Load, clean, and manipulate datasets
 Data Visualization
-Libraries: matplotlib, seaborn, plotly
+Libraries: matplotlib, seaborn, plotly, Numpy, Scikit-learn, Ternsoflow, PyTorch, Pandas, 
 Explore data patterns and distributions
 Model Building
 Libraries: scikit-learn (classical ML), tensorflow, pytorch (deep learning)
