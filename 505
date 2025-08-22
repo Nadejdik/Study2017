@@ -43,8 +43,10 @@ advanced complicated and interesting machine learning
 classification model, customer retention have historical data for the customer
 regression, we build an equation using various input values with their specific weights determined by the overall value of their impact on the outcome, Airlines rely heavily on various input factors to predict an accurate dollar value for how much they should be charging
 .Unsupervised Learning, analyze and cluster unlabeled data sets, discover hidden patterns or groupings without the need for human intervention right so we're using unlabeled data here
-clustering,  when organizations try to do customer segmentation
-Semi-Supervised Learning, Reinforcement Learning, 
+clustering,  when organizations try to group similar customers into buckets segmentation, a variety of information like purchase history, their social media activity or website activity, geography 
+dimensionality reduction, 
+.Semi-Supervised Learning, 
+.Reinforcement Learning, an agent or system take actions in an environment and the environment will then either reward the agent for correct moves or punish it for incorrect moves, self-driving cars so autonomous driving has several factors right there's the speed limit there are drivable zones there are collisions and so on
 
 
 
