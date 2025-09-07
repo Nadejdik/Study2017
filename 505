@@ -671,6 +671,18 @@ The most commonly-used measure
 For regression is the mean squared error (MSE)
 For classification is the accuracy
 
+MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - f(x_i))^2
+Accuracy = \frac{1}{N} \sum_{i=1}^{N} \mathbf{1}(y_i = f(x_i))
+Среднеквадратичная ошибка (MSE):
+MSE = (1/N) * Σ (yi - f(xi))^2 ,   i = 1..N
+Accuracy (точность):
+Accuracy = (1/N) * Σ I(yi = f(xi)) ,   i = 1..N
+где
+N — количество наблюдений
+yi — истинное значение
+f(xi) — предсказанное значение модели
+I(условие) — индикаторная функция, равна 1 если условие выполняется, иначе 0
+
 | **Metric**                   | **Use For**    | **Goal**                     | **Formula Meaning**                              | **Formula**                                                    |
 | ---------------------------- | -------------- | ---------------------------- | ------------------------------------------------ | -------------------------------------------------------------- |
 | **MSE (Mean Squared Error)** | Regression     | Minimize error               | Penalizes squared differences                    | $\text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - f(x_i))^2$     |
